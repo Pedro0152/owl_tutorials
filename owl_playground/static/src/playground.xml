@@ -4,11 +4,8 @@
     <t t-name="owl_playground.playground" owl="1">
         <div class="p-3">
             hello world
-            <p>Counter: <t t-esc="state.value"/></p>
         </div>
-        <button t-on-click="increment">
-            Increment
-        </button>
+        <Counter value="1"/>
     </t>
 
 </templates>
