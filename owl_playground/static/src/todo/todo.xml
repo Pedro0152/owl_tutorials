@@ -2,10 +2,12 @@
 <templates xml:space="preserve">
 
     <t t-name="owl_playground.todo" owl="1">
-        <div class="p-3">
-            <t t-esc="state.id"/>
-            <t t-esc="state.description"/>
-            <t t-esc="state.done"/>
+        <div t-attf-class="
+                {{ props.todo.done ? 'text-muted' : '' }}
+                {{ props.todo.done ? 'text-decoration-line-through' : '' }}
+            ">
+            <t t-esc="props.todo.id"/>
+            <t t-esc="props.todo.description"/>
         </div>
     </t>
 
