@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, useState } from "@odoo/owl";
+import { Component, useState, xml } from "@odoo/owl";
 
 export class Counter extends Component {
     static template = "owl_playground.counter";
