@@ -8,7 +8,7 @@
                 <t t-esc="props.todo.id"/>.
                 <t t-esc="props.todo.description"/>
             </label>
-            <span class="fa fa-remove" t-on-click="onClick"/>
+            <span class="fa fa-remove cursor-pointer" t-on-click="onClick"/>
         </div>
     </t>
 

@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import { Component, useState, useRef, onMounted } from "@odoo/owl";
-import { Todo } from "../todo/todo";
+import { Todo } from "./todo";
 
 export class TodoList extends Component {
     static template = "owl_playground.todoList";
