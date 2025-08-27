@@ -6,7 +6,20 @@
             hello world
         </div>
         <Counter/>
+        <Card title="'card 1'">
+            content of card 1
+        </Card>
+        <Card title="'card 2'">
+            <Counter />
+        </Card>
         <TodoList/>
+        <Notebook>
+          <t t-set-slot="page1" title.translate="Page 1">
+            <div>this is in the page 1</div>
+          </t>
+            <t t-set-slot="page2" title.translate="Page 2" hidden="somevalue">
+            <div>this is in the page 2</div>
+          </t>
+        </Notebook>
     </t>
-
 </templates>
