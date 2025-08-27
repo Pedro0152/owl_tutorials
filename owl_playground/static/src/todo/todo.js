@@ -8,6 +8,14 @@ export class Todo extends Component {
         todo: {
             type: Object,
             shape: { id: Number, description: String, done: Boolean }
-        }
+        },
+        toggleState: Function,
+        removeState: Function,
     };
+    onChange(){
+        this.props.toggleState(this.props.todo.id);
+    }
+    onClick(){
+        this.props.removeState(this.props.todo.id);
+    }
 }

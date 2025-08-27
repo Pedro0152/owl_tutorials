@@ -6,7 +6,7 @@
         <input type="text" class="form-control mb-3" placeholder="Enter a new task." t-on-keyup="addTodo" t-ref="inputTodo"/>
         </div>
         <p t-foreach="todos" t-as="todo" t-key="todo.id">
-        <Todo todo="todo"/>
+        <Todo todo="todo" toggleState.bind="toggleTodo" removeState.bind="removeTodo"/>
         </p>
 
     </t>
