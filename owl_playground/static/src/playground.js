@@ -10,8 +10,4 @@ export class Playground extends Component {
     static template = "owl_playground.playground";
     static components = { Counter, TodoList, Notebook, Card };
 
-    setup() {
-        this.str1 = "<div class='text-primary'>some content</div>";
-        this.str2 = markup("<div class='text-primary'>some content</div>");
-    }
 }
