@@ -5,12 +5,16 @@
         <div class="p-3">
             hello world
         </div>
-        <Counter/>
+            <Counter onChange.bind="incrementSum" />
         <Card title="'card 1'">
             content of card 1
         </Card>
         <Card title="'card 2'">
-            <Counter />
+            <div class="inline">
+            <Counter onChange.bind="incrementSum" />
+            <Counter onChange.bind="incrementSum" />
+            </div>
+            <div>The sum is: <t t-esc="sum.value"/></div>
         </Card>
         <TodoList/>
         <Notebook>
