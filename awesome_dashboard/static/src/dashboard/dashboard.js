@@ -1,3 +1,5 @@
+/* @odoo-module */
+
 import { Component, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { Layout } from "@web/search/layout";

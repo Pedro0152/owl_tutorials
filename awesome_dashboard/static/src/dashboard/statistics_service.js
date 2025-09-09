@@ -1,3 +1,5 @@
+/* @odoo-module */
+
 import { registry } from "@web/core/registry";
 import { reactive } from "@odoo/owl";
 import { rpc } from "@web/core/network/rpc";
@@ -11,7 +13,7 @@ const statisticsService = {
             Object.assign(statistics, updates, { isReady: true });
         }
 
-        setInterval(loadData, 10*60*1000);
+        setInterval(loadData, 5000);
         loadData();
 
         return statistics;
