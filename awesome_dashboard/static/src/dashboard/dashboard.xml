@@ -43,7 +43,7 @@
                     <PieChart data="statistics['orders_by_size']" label="'Shirt orders by size'"/>
                 </DashboardItem>
                 <DashboardItem>
-                    <DoubleCounter/>
+                    <DoubleCounter selected="count1"/>
                 </DashboardItem>
             </div>
         </Layout>    

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="awesome_dashboard.DoubleCounter">
+        <div>
+            <t t-esc="'selected: ' + state.selected + ', value: ' + state[state.selected]"/>
+            <button t-on-click="incrementCounter1">increment count 1</button>
+            <button t-on-click="incrementCounter2">increment count 2</button>
+            <button t-on-click="changeCounter">Switch counter</button>
+        </div>
+    </t>
+</templates>
