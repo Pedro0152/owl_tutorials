@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="awesome_dashboard.DoubleCounterCard" owl="1">
+        <div class="card p-3">
+            <h5 class="card-title">Double Counter</h5>
+            <div>
+                <t t-esc="'selected: ' + state.selected + ', value: ' + state[state.selected]"/>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary btn-sm me-2" t-on-click="incrementCount1">
+                    Increment count 1
+                </button>
+                <button class="btn btn-primary btn-sm me-2" t-on-click="incrementCount2">
+                    Increment count 2
+                </button>
+                <button class="btn btn-secondary btn-sm" t-on-click="changeCounter">
+                    Switch counter
+                </button>
+            </div>
+        </div>
+    </t>
+</templates>

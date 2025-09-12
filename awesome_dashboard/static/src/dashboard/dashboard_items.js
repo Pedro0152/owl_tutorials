@@ -1,5 +1,6 @@
 import { NumberCard } from "./number_card/number_card";
 import { PieChartCard } from "./pie_chart_card/pie_chart_card";
+import { DoubleCounterCard } from "./double_counter_card/double_counter_card";
 import { registry } from "@web/core/registry";
 
 const items = [
@@ -57,7 +58,12 @@ const items = [
             title: "Shirt orders by size",
             values: data.orders_by_size,
         })
-    }
+    },
+    {
+        id: "double_counter",
+        description: "Double Counter",
+        Component: DoubleCounterCard,
+    },
 ]
 
 items.forEach(item => {
