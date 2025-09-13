@@ -5,7 +5,7 @@ import random
 
 from odoo import http
 from odoo.http import request
-
+from odoo import models, fields, api
 logger = logging.getLogger(__name__)
 
 class AwesomeDashboard(http.Controller):
@@ -33,4 +33,34 @@ class AwesomeDashboard(http.Controller):
             },
             'total_amount': random.randint(100, 1000)
         }
+
+
+class AwesomeDashboardController(http.Controller):
+    @http.route("/awesome_dashboard/get_config", type="json", auth="user")
+    def get_config(self):
+        return {
+            "disabledItems": request.env.user.dashboard_config and request.env.user.dashboard_config.split(",") or []
+        }
+
+    @http.route("/awesome_dashboard/set_config", type="json", auth="user")
+    def set_config(self, disabledItems):
+        request.env.user.dashboard_config = ",".join(disabledItems)
+        return True
+
+
+class ResUsers(models.Model):
+    _inherit = "res.users"
+
+    dashboard_config = fields.Text("Dashboard Config")
+
+    @api.model
+    def get_dashboard_config(self, user_id):
+        user = self.browse(user_id)
+        return {"disabledItems": (user.dashboard_config or "").split(",") if user.dashboard_config else []}
+
+    @api.model
+    def set_dashboard_config(self, user_id, disabled_items):
+        user = self.browse(user_id)
+        user.dashboard_config = ",".join(disabled_items)
+        return True
 
