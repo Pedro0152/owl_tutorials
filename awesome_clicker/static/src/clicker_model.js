@@ -6,29 +6,53 @@ export class ClickerModel extends Reactive {
         super();
         this.clicks = 0;
         this.level = 0;
-        this.clickBots = 0;
         this.bus = new EventBus();
+        this.bots = {
+            clickbot: {
+                price: 1000,
+                level: 1,
+                increment: 10,
+                purchased: 0,
+            },
+            bigbot: {
+                price: 5000,
+                level: 2,
+                increment: 100,
+                purchased: 0,
+            }
+        }
 
         document.addEventListener("click", () => this.increment(1), true);
         setInterval(() => {
-            this.clicks += this.clickBots * 10;
+            for(const bot in this.bots) {
+                this.clicks += this.bots[bot].purchased * this.bots[bot].increment;
+            }
         }, 10000);
     }
 
     increment(inc) {
         this.clicks += inc;
-        if (this.level < 1 && this.clicks >= 1000) {
-            this.bus.trigger("MILESTONE_1k");
+        if (this.milestones[this.level] && this.clicks >= this.milestones[this.level].clicks){
+            this.bus.trigger("MILESTONE", this.milestones[this.level]);
             this.level++;
         }
     }
 
-    buyClickBot() {
-        const clickBotPrice = 1000;
-        if (this.clicks < clickBotPrice) {
-            return false;
+    buyBot(name) {
+        if(!this.bots[name]){
+            throw new error("Bot not found");
         }
-        this.clicks -= clickBotPrice;
-        this.clickBots += 1;
+        if(this.clicks < this.bots[name].price){
+        return false;
+        }
+        this.clicks -= this.bots[name].price;
+        this.bots[name].purchased += 1;
+    }
+
+    get milestones(){
+        return [
+            { clicks: 1000, unlock: "clickBot" },
+            { clicks: 5000, unlock: "bigBot" },
+            ]
     }
 }
