@@ -1,5 +1,7 @@
 import { Reactive } from "@web/core/utils/reactive";
 import { EventBus } from "@odoo/owl";
+import { rewards } from "./click_rewards";
+import { choose } from "./utils";
 
 export class ClickerModel extends Reactive {
     constructor() {
@@ -19,15 +21,36 @@ export class ClickerModel extends Reactive {
                 level: 2,
                 increment: 100,
                 purchased: 0,
-            }
+            },
         }
+        this.multiplier = 1
 
         document.addEventListener("click", () => this.increment(1), true);
         setInterval(() => {
             for(const bot in this.bots) {
-                this.clicks += this.bots[bot].purchased * this.bots[bot].increment;
+                this.clicks += this.bots[bot].increment * this.bots[bot].purchased * this.multiplier;
             }
         }, 10000);
+    }
+
+    giveReward() {
+        const availableReward = [];
+        for (const reward of rewards) {
+            if (reward.minLevel <= this.level || !reward.minLevel) {
+                if (reward.maxLevel >= this.level || !reward.maxLevel) {
+                    availableReward.push(reward);
+                }
+            }
+        }
+        return choose(availableReward);
+    }
+
+    buyMultiplier() {
+        if (this.clicks < 50000) {
+            return false;
+        }
+        this.clicks -= 50000;
+        this.multiplier++;
     }
 
     increment(inc) {
@@ -53,6 +76,7 @@ export class ClickerModel extends Reactive {
         return [
             { clicks: 1000, unlock: "clickBot" },
             { clicks: 5000, unlock: "bigBot" },
+            { clicks: 100000, unlock: "power multiplier" },
             ]
     }
 }
