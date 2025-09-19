@@ -51,4 +51,7 @@ export class GalleryController extends Component {
             }
         });
     }
+    async onImageUpload(record_id, image_binary) {
+    this.model.uploadImage(record_id, image_binary, this.props.domain);
+    }
 }

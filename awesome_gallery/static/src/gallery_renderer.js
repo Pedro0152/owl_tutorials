@@ -9,5 +9,6 @@ export class GalleryRenderer extends Component {
     static components = { GalleryImage };
     static props = {
         model: GalleryModel,
+        onImageUpload: Function,
     }
 }
