@@ -21,6 +21,7 @@ export class GalleryModel {
                 specification: {
                     [this.imageField]: {},
                     ...( this.tooltipField ? {[this.tooltipField]: {}}: {}),
+                    vat: {},
                 },
                 context: {
                     bin_size: true,
