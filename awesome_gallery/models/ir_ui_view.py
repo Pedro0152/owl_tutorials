@@ -21,4 +21,4 @@ class View(models.Model):
     #     return _view_info
 
     def _get_view_info(self):
-        return {'gallery': {'icon': 'fa-picture-o', 'multi_record': True}} | super()._get_view_info()
+        return {'gallery': {'icon': 'fa fa-picture-o', 'multi_record': True}} | super()._get_view_info()
