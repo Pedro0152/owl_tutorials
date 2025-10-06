@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="otm_confirmation.ConfirmDialog" owl="1">
+        <Dialog title="Confirmación">
+            <t t-set-slot="default">
+                <p><t t-esc="props.message"/></p>
+            </t>
+            <t t-set-slot="footer">
+                <button type="button" class="btn btn-secondary" t-on-click="() => props.resolve(false)">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" t-on-click="() => props.resolve(true)">
+                    Eliminar
+                </button>
+            </t>
+        </Dialog>
+    </t>
+</templates>
