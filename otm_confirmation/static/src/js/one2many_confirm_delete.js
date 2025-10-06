@@ -32,3 +32,4 @@ patch(ListRenderer.prototype, "otm_confirmation_legacy_patch", {
         }).open();
     },
 });
+
